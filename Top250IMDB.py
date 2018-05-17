@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+# pipreqs : to generate reqs.txt
+# why not to use pip freeze > requirements.txt ( the catch is envdev)
+https://www.idiotinside.com/2015/05/10/python-auto-generate-requirements-txt/
+"""
+
 '''
 mini project where I'm trying to learn scraping a website with BeautifulSoup lib,
 store the data in MongoDB, then do some analysis and viz on the pulled data. 
@@ -166,6 +172,7 @@ def get_single_movie_Info(links_list):
 	print(json.dumps(movie_info,sort_keys=True, indent=4))
 
 def main():
+	"""
 	r = make_request(top_movies_list_url)
 	mov_titls = get_movies_titleid(r)
 	lks = get_movies_link(mov_titls)
@@ -179,145 +186,9 @@ def main():
 	# print(nms)
 	# for i in nms :
 	# 	print(i.text)
+	"""
+	pass
 	
 
 if __name__ == "__main__" :
 	main()
-
-"""
-
-
-#print(title.get("data-titleid"))
-#movie_url+title.get("data-titleid")
-#movies_list.append(movie_url+title.get("data-titleid"))
-
-# rk = soup.find_all("span", {"name":"rk"})
-
-
-def get_movies_url(titles) :
-	for title in titles :
-		if title.has_attr('data-titleid') :
-			movies_list.append(movie_url+title.get("data-titleid"))
-	return movies_list
-
-
-def get_movie_detls(mov_lst) :
-	mov_lst = get_movies_url(titles)
-
-	for mov in mov_lst :
-		r = requests.get(mov)
-		mov_tilt = soup.find("h1", {"itemprop","name"}).text
-		break
-
-
-
-#m = requests.get('http://www.imdb.com/title/tt0111161/')
-#soup = BeautifulSoup(m.content, "lxml")
-#mov_tilt = soup.find_all("div", {"class","title_wrapper"})
-#mov_tilt = soup.find_all("h1", {"itemprop":"name"})
-
-#div class="title_wrapper"
-
-#print(mov_tilt)
-#print(len(mov_tilt))
-
-#for i in mov_tilt :
-	#print(i.text.encode('utf-8'))
-
-ur = []
-w = 1
-def get_movies_url1(movies_list) :
-	for mv in movies_list :
-		m = requests.get(movie_url+mv)
-		s = BeautifulSoup(m.content, "lxml")
-		d = s.find_all("h1", {"itemprop":"name"})
-		for i in d :
-			a = i.text.encode('utf-8')
-			a = a[:-9]
-			ur.append(a)
-
-		#print(d.text.encode('utf-8'))
-
-get_movies_url1(movies_list)
-
-
-for i in ur :
-	print(i)
-	#return movies_list
-
-
-
-#<h1 itemprop="name" class="">The Shawshank Redemption&nbsp;<span id="titleYear">(<a href="/year/1994/?ref_=tt_ov_inf">1994</a>)</span>            </h1>
-
-# ranking
-# for movie in movies_list :
-# 	print(movies_list.index(movie), movie)
-
-# for r in rk:
-# 	if r.has_attr("data-value") :
-# 		print(r.get("data-value"))
-
-
-
-
-
-
-
-
-
-
-#titles = soup.find_all("div", {"class":"data-titleid"})
-#titles = soup.find_all("data-titleid")
-#titles = soup.find_all("div").attrs
-#for title in titles :
-	#print(title)
-
-#titles = soup.div
-# i = 0
-# for title in titles :
-# 	a = title.get("data-titleid")
-# 	if a is not None :
-# 		print(a)
-# print(i)
-
-# for title in titles :
-# 	if title.has_attr('data-titleid') :
-# 		print(title.get("data-titleid"))
-
-
-
-
-
-#titles = soup.div['class']
-
-#titles = soup.div
-#print(titles)
-
-
-#print(titles.attrs['data-titleid'])
-#attrs['data-lat']
-
-
-'''
-ur = []
-w = 1
-def get_movies_url1(movies_list) :
-	for mv in movies_list :
-		m = requests.get(movie_url+mv)
-		s = BeautifulSoup(m.content, "lxml")
-		d = s.find_all("h1", {"itemprop":"name"})
-		for i in d :
-			a = i.text.encode('utf-8')
-			a = a[:-9]
-			ur.append(a)
-
-		#print(d.text.encode('utf-8'))
-
-get_movies_url1(movies_list)
-
-
-for i in ur :
-	print(i)
-	'''
-
-"""
