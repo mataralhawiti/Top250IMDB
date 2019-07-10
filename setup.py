@@ -16,7 +16,7 @@ with codecs.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 required = [
-    'requests==2.18.4',
+    'requests==2.20.0',
     'beautifulsoup4==4.6.0',
     'pymongo==3.6.1'
 
